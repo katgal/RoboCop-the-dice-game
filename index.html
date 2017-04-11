@@ -11,6 +11,55 @@
 <body>
     <main>
         <div class="gameWrap">
+            <!-- player 1 panel -->
+            <div class="player-0-panel panel activePlayer">
+                <div class="playerChar">
+                    <p class="playerName" id="name-0">
+                        RoboCop
+                    </p>
+                    <img src="images/robo.jpg" alt="Robocop" />
+                </div>
+                <div class="playerGeneralScore" id="score-0">
+                    0
+                </div>
+                <div class="playerCurrentWrap">
+                    <div class="playerCurrentLabel">
+                        Current
+                    </div>
+                    <div class="playerCurrentScore" id="current-0">
+                        0
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- player 2 panel -->
+            <div class="player-0-panel panel">
+                <div class="playerChar">
+                    <p class="playerName" id="name-1">
+                        Ed 209
+                    </p>
+                    <img src="images/ed.jpg" alt="Robocop" />
+                </div>
+                <div class="playerGeneralScore" id="score-1">
+                    0
+                </div>
+                <div class="playerCurrentWrap">
+                    <div class="playerCurrentLabel">
+                        Current
+                    </div>
+                    <div class="playerCurrentScore" id="current-1">
+                        0
+                    </div>
+                </div>
+
+            </div>
+            <!-- game buttons -->
+            <button type="button" class="btnNewGame">new game</button>
+            <button type="button" class="btnRoll">roll dice</button>
+            <button type="button" class="btnHold">hold</button>
+            <!-- input for manual score setting-->
+            <input id="input" type="text" name="final score" placeholder="Set score" />
 
         </div>
     </main>
