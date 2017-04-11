@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'ambleregular', Arial, sans-serif;
+}
+
+main {
+    width: 100vw;
+    height: 100vh;
+    background-color: lighten($additional-color, 20%);
+    background-image: url("../images/roboBackground.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+}
+
+.gameWrap {
+    width: 55%;
+    height: 55%;
+    background-color: rgba($additional-color, 0.8);
+    z-index: 10;
+    margin: auto;
+}
