@@ -6,6 +6,20 @@ body {
     font-family: 'ambleregular', Arial, sans-serif;
 }
 
+.music {
+    width: 90px;
+    height: 26px;
+    background-color: darken(rgba(239, 79, 53, 0.7), 15%);
+    color: $additional-color2;
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 5px;
+    box-shadow: 2px 1px 7px 5px $additional-color;
+    border-radius: 2px;
+    cursor: pointer;
+}
+
 main {
     width: 100vw;
     height: 100vh;
@@ -15,14 +29,16 @@ main {
     background-size: cover;
     background-position: center;
     display: flex;
+    display: -ms-flexbox;
 }
 
 .activePlayer {
     background-color: rgba(darken($minor-color, 10%), 0.5);
+    transition: background-color 0.5s ease-in-out;
 }
 
 .activePlayer .playerChar {
-    box-shadow: 13px 11px 19px 3px black;
+    border-top: 3px solid darken(rgb(239, 79, 53), 15%);
 }
 
 .gameWrap {
@@ -33,14 +49,19 @@ main {
     margin: auto;
     position: relative;
     display: flex;
+    box-shadow: 13px 11px 19px 3px $additional-color;
 }
 
 .panel {
     width: 50%;
     height: 100%;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -ms-flex-pack: distribute;
     justify-content: space-around;
+    -ms-flex-align: center;
     align-items: center;
 
     .playerChar {
@@ -49,7 +70,6 @@ main {
         margin: 80px 0 5px;
 
         .playerName {
-            // color: $additional-color2;
             font-size: 35px;
             text-align: center;
             text-transform: uppercase;
@@ -61,6 +81,7 @@ main {
             width: 100%;
             height: 72%;
             border-radius: 5px;
+            box-shadow: 4px 5px 14px 0 $additional-color;
         }
     }
 
@@ -171,5 +192,14 @@ button {
     height: 100px;
     @extend %center;
     bottom: 50%;
+    box-shadow: 13px 11px 19px 3px $additional-color;
     opacity: 0.8;
+}
+
+.showHide {
+    display: none;
+}
+
+.winner {
+    color: darken(rgb(239, 79, 53), 15%) !important;
 }
