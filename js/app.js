@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function() {
             document.querySelector("#score-" + activePlayer).textContent = score[activePlayer];
 
             var setAmmo = document.querySelector("#input").value;
-            var wininngScore;
+            var winningScore;
 
             // if(setAmmo !== /^\d+$/){
             // play = false;
@@ -126,40 +126,12 @@ document.addEventListener("DOMContentLoaded", function() {
             // setAmmo = /^\d+$/;
 
             if (setAmmo) {
-                wininngScore = setAmmo;
+                winningScore = setAmmo;
             } else {
-                wininngScore = 50;
+                winningScore = 50; //default winning score
             }
-            /*
-                         if (score[0]===21 || score[0]===44 ){//robo wins
-                            document.querySelector("#name-0").textContent = "Winner!";
-                            document.querySelector("#name-0").classList.add("winner");
 
-                            diceImg.classList.add("showHide");
-
-                            var fix = new Audio("audio/fix.wav");
-                            fix.volume = 0.4;
-                            fix.play();
-                            ed.src = "images/hit.jpg";
-                            critical.style.display = "block";
-                            play = false;
-                        }
-                        if(score[1]===33 || score[1]===47 ){//ed wins
-                            document.querySelector("#name-1").textContent = "Winner!";
-                            document.querySelector("#name-1").classList.add("winner");
-
-                            diceImg.classList.add("showHide");
-
-                            var dollar = new Audio("audio/dollar.wav");
-                            dollar.volume = 0.4;
-                            dollar.play();
-                            robo.src = "images/roboDead.jpg";
-                            critical.style.display = "block";
-                            play = false;
-                        }
-            */
-
-            if (score[activePlayer] >= wininngScore) {
+            if (score[activePlayer] >= winningScore) {
 
                 document.querySelector("#name-" + activePlayer).textContent = "Winner!";
                 document.querySelector("#name-" + activePlayer).classList.add("winner");
@@ -168,6 +140,34 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 play = false; //stop playing
 
+            } else if (score[0] === (winningScore - 37) || score[0] === (winningScore - 29) || score[0] === (winningScore - 6)) {
+                //robo wins by critical hit - default values: 13, 21,44
+                document.querySelector("#name-0").textContent = "Winner!";
+                document.querySelector("#name-0").classList.add("winner");
+
+                diceImg.classList.add("showHide");
+
+                var fix = new Audio("audio/fix.wav");
+                fix.volume = 0.4;
+                fix.play();
+                ed.src = "images/hit.jpg";
+                critical.style.display = "block";
+
+                play = false; //stop playing
+
+            } else if (score[1] === (winningScore - 17) || score[1] === (winningScore - 3)) {
+                //ed wins by critical hit - default values: 33, 47
+                document.querySelector("#name-1").textContent = "Winner!";
+                document.querySelector("#name-1").classList.add("winner");
+
+                diceImg.classList.add("showHide");
+
+                var dollar = new Audio("audio/dollar.wav");
+                dollar.volume = 0.4;
+                dollar.play();
+                robo.src = "images/robodead.jpg";
+                critical.style.display = "block";
+                play = false;
             } else {
                 if (activePlayer === 0) {
                     activePlayer = 1;
@@ -195,29 +195,38 @@ document.addEventListener("DOMContentLoaded", function() {
 
     //new game button
     newGame.addEventListener("click", function() {
+
+        var deadOrAlive = new Audio("audio/dead-alive.wav");
+        deadOrAlive.volume = 0.4;
+        deadOrAlive.play();
+        //clear functions scores
         score = [0, 0];
         currentScore = 0;
         activePlayer = 0;
         play = true;
+        //hide dice
         diceImg.classList.add("showHide");
+        //clear current score html
         currentPlayer1.textContent = "0";
         currentPlayer2.textContent = "0";
-
+        //clear global score html
         scoreGlobal1.textContent = "0";
         scoreGlobal2.textContent = "0";
-
+        //reset names
         namePlayer1.textContent = "Robocop";
         namePlayer2.textContent = "Ed 209";
-
+        //removes classes and set activePlayer on player1
         namePlayer1.classList.remove("winner");
         namePlayer2.classList.remove("winner");
         player1panel.classList.remove("activePlayer");
         player2panel.classList.remove("activePlayer");
         player1panel.classList.add("activePlayer");
-
+        //reset images
         robo.src = "images/robo.jpg";
         ed.src = "images/ed.jpg";
-
+        //reset ammo input
+        document.querySelector("#input").value = "";
+        //clear critical strike
         critical.style.display = "none";
 
     });
@@ -227,7 +236,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //**********************************************
 
     function music() {
-        var music = new Audio("audio/mainTheme.mp3");
+        var music = new Audio("audio/main-theme.mp3");
         music.volume = 0.4;
         music.loop = true;
         music.play();
