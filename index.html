@@ -10,6 +10,17 @@
 </head>
 
 <body>
+    <div class="start">
+        <div class="start__content content">
+            <img src="images/roboCop.png" class="startPic content__img" alt="" title="Stay out of trouble." />
+            <p class="content__paragraph">
+                Detroit - the fallen city. Cop killer Clarence Boddicker is dead. And now You are going towards OCP headquaters to arrest Dick Jones - the corrupted Senior President of OCP. But in Your way is standing the latest product of Detroit corporation - Ed 209...
+            </p>
+            <div class="content__fight fight">
+                click for take an action <span class="blink">&gt</span>
+            </div>
+        </div>
+    </div>
     <div class="music">
         music: ON
     </div>
@@ -21,7 +32,7 @@
                     <p class="playerName" id="name-0">
                         RoboCop
                     </p>
-                    <img src="images/robo.jpg" class="hero" alt="Robocop" />
+                    <img src="images/robo.jpg" class="hero robo" alt="Robocop" title="Drop it!" />
                 </div>
                 <div class="playerGeneralScore" id="score-0">
                     0
@@ -43,7 +54,7 @@
                     <p class="playerName" id="name-1">
                         Ed 209
                     </p>
-                    <img src="images/ed.jpg" class="hero" alt="Ed 209" />
+                    <img src="images/ed.jpg" class="hero ed" alt="Ed 209" title="Grrraarr!" />
                 </div>
                 <div class="playerGeneralScore" id="score-1">
                     0
@@ -66,8 +77,11 @@
             <input id="input" type="text" name="final score" placeholder="Set ammo" />
             <!-- dice -->
 
-            <img src="images/dice-4.png" alt="dice" class="dice" />
-
+            <img src="images/dice-4.png" alt="dice" class="dice" title="" />
+            <!-- critical hit -->
+            <div class="hit">
+                critical hit!
+            </div>
 
         </div>
     </main>

@@ -5,6 +5,53 @@
 body {
     font-family: 'ambleregular', Arial, sans-serif;
 }
+//*********************************************
+//******************** intro ******************
+//*********************************************
+
+.start {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($additional-color, 0.8);
+    z-index: 100;
+    display: flex;
+    position: fixed;
+
+    .content {
+        width: 1000px;
+        height: 65%;
+        background-color: lighten($additional-color, 5%);
+        margin: auto;
+        position: relative;
+
+        &__img {
+            height: 175%;
+            position: absolute;
+            top: -153px;
+        }
+
+        &__paragraph {
+            width: 50%;
+            height: 100%;
+            float: right;
+            color: rgb(66, 180, 106);
+            font-size: 30px;
+            line-height: 63px;
+        }
+
+        &__fight {
+            position: absolute;
+            color: rgb(66, 180, 106);
+            font-size: 20px;
+            bottom: 35px;
+            right: 20px;
+            cursor: crosshair;
+        }
+    }
+}
+//*********************************************
+//************** music panel ******************
+//*********************************************
 
 .music {
     width: 90px;
@@ -18,7 +65,11 @@ body {
     box-shadow: 2px 1px 7px 5px $additional-color;
     border-radius: 2px;
     cursor: pointer;
+    z-index: 1000;
 }
+//*********************************************
+//**************** game core ******************
+//*********************************************
 
 main {
     width: 100vw;
@@ -45,7 +96,6 @@ main {
     width: 1000px;
     height: 65%;
     background-color: rgba($additional-color, 0.8);
-    z-index: 10;
     margin: auto;
     position: relative;
     display: flex;
@@ -202,4 +252,20 @@ button {
 
 .winner {
     color: darken(rgb(239, 79, 53), 15%) !important;
+}
+
+.hit {
+    position: absolute;
+    width: 140px;
+    height: 60px;
+    background-color: darken(rgba(239, 79, 53, 0.8), 15%);
+    text-transform: uppercase;
+    @extend %center;
+    bottom: 62%;
+    border-radius: 4px;
+    text-align: center;
+    padding-top: 20px;
+    color: $additional-color2;
+    font-weight: bold;
+    display: none;
 }

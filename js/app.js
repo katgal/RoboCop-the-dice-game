@@ -2,36 +2,55 @@
 document.addEventListener("DOMContentLoaded", function() {
     console.log("Dead or alive, you're coming with me.");
 
-    //music
-    var music = new Audio("audio/mainTheme.mp3");
-    music.volume = 0.4;
-    music.loop = true;
-    music.play();
+    //**********************************************
+    //******************** intro *******************
+    //**********************************************
+    function intro() {
+        var action = document.querySelector(".fight");
+        var fullscreen = document.querySelector(".start");
 
-    var musicSwitch = document.querySelector(".music");
-    musicSwitch.addEventListener("click", function() {
-        if (music.volume == 0.4) {
-            music.volume = 0.0;
-            musicSwitch.textContent = "music: OFF";
-        } else {
-            music.volume = 0.4;
-            musicSwitch.textContent = "music: ON";
+
+        function blink() {
+            var blink = document.querySelector(".blink");
+
+            function hide() {
+                blink.style.opacity = "0";
+                setTimeout(show, 500);
+            }
+
+            function show() {
+                blink.style.opacity = "1";
+                setTimeout(hide, 500);
+            }
+            hide();
         }
-    });
+        blink();
+
+        action.addEventListener("click", function() {
+            fullscreen.style.display = "none";
+        });
+
+    }
+    intro();
+
+    //**********************************************
+    //***************** game core  *****************
+    //**********************************************
+
+
 
 
     //scores variables
-    var score, generalScore, currentScore, activePlayer;
+    var score, currentScore, activePlayer, play;
 
     score = [0, 0];
-    generalScore = 0;
     currentScore = 0;
     activePlayer = 0;
-
+    play = true;
 
     //general variables
     var diceImg, newGame, player1panel, player2panel, currentPlayer1, currentPlayer2, scoreGlobal1, scoreGlobal2,
-        namePlayer1, namePlayer2;
+        namePlayer1, namePlayer2, ed, robo;
 
     player1panel = document.querySelector(".player-0-panel");
     player2panel = document.querySelector(".player-1-panel");
@@ -45,6 +64,8 @@ document.addEventListener("DOMContentLoaded", function() {
     namePlayer1 = document.getElementById("name-0");
     namePlayer2 = document.getElementById("name-1");
 
+    ed = document.querySelector(".ed");
+    robo = document.querySelector(".robo");
 
 
     diceImg = document.querySelector(".dice");
@@ -52,76 +73,112 @@ document.addEventListener("DOMContentLoaded", function() {
 
     newGame = document.querySelector(".btnNewGame");
 
-
     var btnRoll = document.querySelector(".btnRoll");
 
     btnRoll.addEventListener("click", function() {
-        //dice
-        var dice = Math.floor(Math.random() * 6) + 1;
-        diceImg.classList.remove("showHide");
-        diceImg.src = "images/dice-" + dice + ".png";
+        if (play) {
+            //dice
+            var dice = Math.floor(Math.random() * 6) + 1;
+            diceImg.classList.remove("showHide");
+            diceImg.src = "images/dice-" + dice + ".png";
 
-        if (dice !== 1) {
-            currentScore += dice;
-            document.querySelector("#current-" + activePlayer).textContent = currentScore;
-        } else {
-            //set active player
-            if (activePlayer === 0) {
-                activePlayer = 1;
-
-                var roboSpeak = new Audio("audio/creep.wav");
-                roboSpeak.volume = 0.3;
-                roboSpeak.play();
-
+            if (dice !== 1) {
+                currentScore += dice;
+                document.querySelector("#current-" + activePlayer).textContent = currentScore;
             } else {
-                activePlayer = 0;
-                var edSpeak = new Audio("audio/ed.wav");
-                edSpeak.volume = 0.3;
-                edSpeak.play();
+                //set active player
+                if (activePlayer === 0) {
+                    activePlayer = 1;
 
+                    var roboSpeak = new Audio("audio/creep.wav");
+                    roboSpeak.volume = 0.3;
+                    roboSpeak.play();
+
+                } else {
+                    activePlayer = 0;
+                    var edSpeak = new Audio("audio/ed.wav");
+                    edSpeak.volume = 0.3;
+                    edSpeak.play();
+
+                }
+                //reset values
+                resetNextPlayer();
             }
-            //reset values
-            resetNextPlayer();
         }
-
     });
 
     var btnHold = document.querySelector(".btnHold");
+    var critical = document.querySelector(".hit");
 
     btnHold.addEventListener("click", function() {
 
-        score[activePlayer] += currentScore;
-        document.querySelector("#score-" + activePlayer).textContent = score[activePlayer];
 
-        var setAmmo = document.querySelector("#input").value;
-        var wininngScore;
-        // setAmmo = /^\d+$/;
+        if (play) {
+            score[activePlayer] += currentScore;
+            document.querySelector("#score-" + activePlayer).textContent = score[activePlayer];
 
-        if (setAmmo) {
-            wininngScore = setAmmo;
-        } else {
-            wininngScore = 77;
-        }
+            var setAmmo = document.querySelector("#input").value;
+            var wininngScore;
 
-        if (score[activePlayer] >= wininngScore) {
+            // if(setAmmo !== /^\d+$/){
+            // play = false;
+            // }
+            // setAmmo = /^\d+$/;
 
-            document.querySelector("#name-" + activePlayer).textContent = "Winner!";
-            document.querySelector("#name-" + activePlayer).classList.add("winner");
+            if (setAmmo) {
+                wininngScore = setAmmo;
+            } else {
+                wininngScore = 50;
+            }
+            /*
+                         if (score[0]===21 || score[0]===44 ){//robo wins
+                            document.querySelector("#name-0").textContent = "Winner!";
+                            document.querySelector("#name-0").classList.add("winner");
 
-            diceImg.classList.add("showHide");
+                            diceImg.classList.add("showHide");
 
+                            var fix = new Audio("audio/fix.wav");
+                            fix.volume = 0.4;
+                            fix.play();
+                            ed.src = "images/hit.jpg";
+                            critical.style.display = "block";
+                            play = false;
+                        }
+                        if(score[1]===33 || score[1]===47 ){//ed wins
+                            document.querySelector("#name-1").textContent = "Winner!";
+                            document.querySelector("#name-1").classList.add("winner");
 
-        } else {
-            if (activePlayer === 0) {
-                activePlayer = 1;
+                            diceImg.classList.add("showHide");
+
+                            var dollar = new Audio("audio/dollar.wav");
+                            dollar.volume = 0.4;
+                            dollar.play();
+                            robo.src = "images/roboDead.jpg";
+                            critical.style.display = "block";
+                            play = false;
+                        }
+            */
+
+            if (score[activePlayer] >= wininngScore) {
+
+                document.querySelector("#name-" + activePlayer).textContent = "Winner!";
+                document.querySelector("#name-" + activePlayer).classList.add("winner");
+
+                diceImg.classList.add("showHide");
+
+                play = false; //stop playing
 
             } else {
-                activePlayer = 0;
-            }
-            //reset values
-            resetNextPlayer();
-        }
+                if (activePlayer === 0) {
+                    activePlayer = 1;
 
+                } else {
+                    activePlayer = 0;
+                }
+                //reset values
+                resetNextPlayer();
+            }
+        }
     });
 
     function resetNextPlayer() {
@@ -136,9 +193,12 @@ document.addEventListener("DOMContentLoaded", function() {
         diceImg.classList.add("showHide");
     }
 
-
+    //new game button
     newGame.addEventListener("click", function() {
-
+        score = [0, 0];
+        currentScore = 0;
+        activePlayer = 0;
+        play = true;
         diceImg.classList.add("showHide");
         currentPlayer1.textContent = "0";
         currentPlayer2.textContent = "0";
@@ -154,10 +214,35 @@ document.addEventListener("DOMContentLoaded", function() {
         player1panel.classList.remove("activePlayer");
         player2panel.classList.remove("activePlayer");
         player1panel.classList.add("activePlayer");
+
+        robo.src = "images/robo.jpg";
+        ed.src = "images/ed.jpg";
+
+        critical.style.display = "none";
+
     });
 
+    //**********************************************
+    //******************** music *******************
+    //**********************************************
 
+    function music() {
+        var music = new Audio("audio/mainTheme.mp3");
+        music.volume = 0.4;
+        music.loop = true;
+        music.play();
 
+        var musicSwitch = document.querySelector(".music");
+        musicSwitch.addEventListener("click", function() {
+            if (music.volume == 0.4) {
+                music.volume = 0.0;
+                musicSwitch.textContent = "music: OFF";
+            } else {
+                music.volume = 0.4;
+                musicSwitch.textContent = "music: ON";
+            }
+        });
+    }
+    music();
 
-    //
 });
