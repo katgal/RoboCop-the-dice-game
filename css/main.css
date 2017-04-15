@@ -212,7 +212,7 @@ main {
   border: none;
 }
 
-button, #input, .dice, .hit, .endRobo .ending1 .credits {
+button, #input, .dice, .hit, .endRobo .ending1 .credits, .endEd .ending2 .tryAgain {
   left: 50%;
   transform: translateX(-50%);
 }
@@ -365,6 +365,57 @@ button:focus {
 }
 
 .endRobo .ending1 .credits:hover {
+  background-color: #2d7c49;
+  color: white;
+}
+
+.endEd {
+  left: 0;
+  top: 0;
+}
+
+.endEd .ending2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+}
+
+.endEd .ending2 .gameOver {
+  border: 5px solid #2d7c49;
+  border-radius: 3px;
+  box-shadow: 6px 7px 20px 9px black;
+}
+
+.endEd .ending2 p:first-of-type {
+  color: #42b46a;
+  font-size: 30px;
+  padding: 30px;
+}
+
+.endEd .ending2 p:nth-of-type(2) {
+  color: #42b46a;
+  font-size: 100px;
+  padding: 30px;
+  text-transform: uppercase;
+}
+
+.endEd .ending2 .tryAgain {
+  text-transform: uppercase;
+  position: absolute;
+  font-size: 30px;
+  bottom: 5%;
+  width: 180px;
+  height: 45px;
+  border: 5px solid #2d7c49;
+  text-align: center;
+  padding: 3px;
+  border-radius: 3px;
+  color: #42b46a;
+  cursor: url("../images/crosshair.cur"), crosshair;
+}
+
+.endEd .ending2 .tryAgain:hover {
   background-color: #2d7c49;
   color: white;
 }

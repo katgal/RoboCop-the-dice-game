@@ -139,7 +139,12 @@ document.addEventListener("DOMContentLoaded", function() {
                 diceImg.classList.add("showHide");
                 //ending Robo
                 if(score[0]>= winningScore){
+                    edDestroyed();
                     setTimeout(roboWins, 5000);
+
+                }else{
+                    roboDestroyed();
+                    setTimeout(edWins, 3000);
                 }
 
                 play = false; //stop playing
@@ -151,10 +156,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 diceImg.classList.add("showHide");
 
-                var fix = new Audio("audio/fix.wav");
+                /*var fix = new Audio("audio/fix.wav");
                 fix.volume = 0.4;
                 fix.play();
                 ed.src = "images/hit.jpg";
+                */
+                edDestroyed();
+
                 critical.style.display = "block";
                 //ending Robo
                 setTimeout(roboWins, 5000);
@@ -168,11 +176,15 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 diceImg.classList.add("showHide");
 
-                var dollar = new Audio("audio/dollar.wav");
-                dollar.volume = 0.4;
-                dollar.play();
+                /*var disappointed = new Audio("audio/dis.wav");
+                disappointed.volume = 0.4;
+                disappointed.play();
                 robo.src = "images/robodead.jpg";
+                */
+                roboDestroyed();
                 critical.style.display = "block";
+
+                setTimeout(edWins, 3000);
                 play = false;
             } else {
                 if (activePlayer === 0) {
@@ -256,9 +268,34 @@ document.addEventListener("DOMContentLoaded", function() {
     }
     //ed wins
     function edWins() {
+        var end2 = document.querySelector(".endEd");
+        end2.classList.remove("showHide");
+
+        var dollar = new Audio("audio/dollar.wav");
+        dollar.volume = 0.4;
+        var gameOver = function() {
+            dollar.play();
+        };
+        setTimeout(gameOver, 500);
+
+        document.querySelector(".tryAgain").addEventListener("click", function(){
+            end2.classList.add("showHide");
+        });
 
     }
 
+function edDestroyed(){
+    var fix = new Audio("audio/fix.wav");
+    fix.volume = 0.4;
+    fix.play();
+    ed.src = "images/hit.jpg";
+}
+function roboDestroyed(){
+    var disappointed = new Audio("audio/dis.wav");
+    disappointed.volume = 0.4;
+    disappointed.play();
+    robo.src = "images/robodead.jpg";
+}
     //**********************************************
     //******************** music *******************
     //**********************************************

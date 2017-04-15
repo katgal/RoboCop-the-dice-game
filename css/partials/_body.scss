@@ -173,6 +173,7 @@ main {
     background-color: transparent;
     border: none;
 }
+// center elements
 
 %center {
     left: 50%;
@@ -333,6 +334,61 @@ button {
             font-size: 30px;
             bottom: 3%;
             width: 135px;
+            height: 45px;
+            border: 5px solid darken($minor-color2, 15%);
+            text-align: center;
+            padding: 3px;
+            border-radius: 3px;
+            color: $minor-color2;
+            cursor: url("../images/crosshair.cur"), crosshair;
+
+            &:hover {
+                background-color: darken($minor-color2, 15%);
+                color: $additional-color2;
+            }
+        }
+    }
+}
+//*********************************************
+//***************** ending 2 *******************
+//*************** game over *******************
+
+.endEd {
+    left: 0;
+    top: 0;
+
+    .ending2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px;
+
+        .gameOver {
+            border: 5px solid darken($minor-color2, 15%);
+            border-radius: 3px;
+            box-shadow: 6px 7px 20px 9px $additional-color;
+        }
+
+        p:first-of-type {
+            color: $minor-color2;
+            font-size: 30px;
+            padding: 30px;
+        }
+
+        p:nth-of-type(2) {
+            color: $minor-color2;
+            font-size: 100px;
+            padding: 30px;
+            text-transform: uppercase;
+        }
+
+        .tryAgain {
+            text-transform: uppercase;
+            position: absolute;
+            @extend %center;
+            font-size: 30px;
+            bottom: 5%;
+            width: 180px;
             height: 45px;
             border: 5px solid darken($minor-color2, 15%);
             text-align: center;
