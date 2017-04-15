@@ -5,7 +5,7 @@
   font-style: normal;
 }
 
-html, body, div, span, applet, object, iframe, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+html, body, div, span, applet, object, iframe, p, pre, a, abbr, acronym, address, big, cite, code, del, dfn, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -56,7 +56,7 @@ body {
 .start {
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.9);
   z-index: 100;
   display: flex;
   position: fixed;
@@ -68,6 +68,7 @@ body {
   background-color: #0d0d0d;
   margin: auto;
   position: relative;
+  border: 5px solid black;
 }
 
 .start .content__img {
@@ -107,7 +108,7 @@ body {
   box-shadow: 2px 1px 7px 5px black;
   border-radius: 2px;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 110;
 }
 
 main {
@@ -211,7 +212,7 @@ main {
   border: none;
 }
 
-button, #input, .dice, .hit {
+button, #input, .dice, .hit, .endRobo .ending1 .credits {
   left: 50%;
   transform: translateX(-50%);
 }
@@ -295,6 +296,77 @@ button:focus {
   color: white;
   font-weight: bold;
   display: none;
+}
+
+.endRobo {
+  left: 0;
+  top: 0;
+}
+
+.endRobo .ending1 {
+  padding: 40px;
+}
+
+.endRobo .ending1__container {
+  width: 100%;
+  height: 50%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.endRobo .ending1__container--img {
+  width: 312px;
+  height: 230px;
+  border: 5px solid #2d7c49;
+  border-radius: 3px;
+  box-shadow: 6px 7px 20px 9px black;
+}
+
+.endRobo .ending1__container .dick {
+  margin-right: 10%;
+}
+
+.endRobo .ending1__container .happyRobo {
+  margin-left: 10%;
+}
+
+.endRobo .ending1__container p {
+  width: 50%;
+  font-size: 20px;
+  color: #42b46a;
+  line-height: 33px;
+}
+
+.endRobo .ending1__container p em {
+  text-transform: uppercase;
+  line-height: 30px;
+}
+
+.endRobo .ending1__container p .mission {
+  font-size: 30px;
+  text-transform: uppercase;
+  line-height: 105px;
+  margin-left: 20%;
+}
+
+.endRobo .ending1 .credits {
+  text-transform: uppercase;
+  position: absolute;
+  font-size: 30px;
+  bottom: 3%;
+  width: 135px;
+  height: 45px;
+  border: 5px solid #2d7c49;
+  text-align: center;
+  padding: 3px;
+  border-radius: 3px;
+  color: #42b46a;
+  cursor: url("../images/crosshair.cur"), crosshair;
+}
+
+.endRobo .ending1 .credits:hover {
+  background-color: #2d7c49;
+  color: white;
 }
 
 /*# sourceMappingURL=main.css.map */

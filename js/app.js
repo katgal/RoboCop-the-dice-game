@@ -137,6 +137,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 document.querySelector("#name-" + activePlayer).classList.add("winner");
 
                 diceImg.classList.add("showHide");
+                //ending Robo
+                if(score[0]>= winningScore){
+                    setTimeout(roboWins, 5000);
+                }
 
                 play = false; //stop playing
 
@@ -152,6 +156,8 @@ document.addEventListener("DOMContentLoaded", function() {
                 fix.play();
                 ed.src = "images/hit.jpg";
                 critical.style.display = "block";
+                //ending Robo
+                setTimeout(roboWins, 5000);
 
                 play = false; //stop playing
 
@@ -230,12 +236,26 @@ document.addEventListener("DOMContentLoaded", function() {
         critical.style.display = "none";
 
     });
-//robocop wins
-    function roboWins(){
-        
+    //robocop wins
+    function roboWins() {
+        document.querySelector(".endRobo").classList.remove("showHide");
+
+        var thanku = new Audio("audio/thanku.wav");
+        thanku.volume = 0.4;
+        var fired = function() {
+            thanku.play();
+        };
+        setTimeout(fired, 2000);
+
+        var murphy = new Audio("audio/murphy.wav");
+        murphy.volume = 0.4;
+        var name = function() {
+            murphy.play();
+        };
+        setTimeout(name, 11500);
     }
-//ed wins
-    function edWins(){
+    //ed wins
+    function edWins() {
 
     }
 

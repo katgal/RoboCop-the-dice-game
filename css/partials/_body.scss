@@ -12,7 +12,7 @@ body {
 .start {
     width: 100vw;
     height: 100vh;
-    background-color: rgba($additional-color, 0.8);
+    background-color: rgba($additional-color, 0.9);
     z-index: 100;
     display: flex;
     position: fixed;
@@ -23,10 +23,11 @@ body {
         background-color: lighten($additional-color, 5%);
         margin: auto;
         position: relative;
+        border: 5px solid $additional-color;
 
         &__img {
             height: 175%;
-            width:50%;
+            width: 50%;
             position: absolute;
             top: -153px;
         }
@@ -66,7 +67,7 @@ body {
     box-shadow: 2px 1px 7px 5px $additional-color;
     border-radius: 2px;
     cursor: pointer;
-    z-index: 1000;
+    z-index: 110;
 }
 //*********************************************
 //**************** game core ******************
@@ -269,4 +270,81 @@ button {
     color: $additional-color2;
     font-weight: bold;
     display: none;
+}
+//*********************************************
+//***************** ending 1 ******************
+//*********************************************
+
+.endRobo {
+    // display: none;
+    left: 0;
+    top: 0;
+
+    .ending1 {
+        padding: 40px;
+
+        &__container {
+            width: 100%;
+            height: 50%;
+            display: flex;
+            justify-content: space-between;
+
+            &--img {
+                width: 312px;
+                height: 230px;
+                border: 5px solid darken($minor-color2, 15%);
+                border-radius: 3px;
+                box-shadow: 6px 7px 20px 9px $additional-color;
+            }
+
+            .dick {
+                margin-right: 10%;
+            }
+
+            .happyRobo {
+                margin-left: 10%;
+            }
+
+            p {
+                width: 50%;
+                font-size: 20px;
+                color: $minor-color2;
+                line-height: 33px;
+
+                em {
+                    text-transform: uppercase;
+                    line-height: 30px;
+                }
+
+                .mission {
+                    font-size: 30px;
+                    text-transform: uppercase;
+                    line-height: 105px;
+                    margin-left: 20%;
+                }
+            }
+        }
+        //*********************************************
+        //***************** credits *******************
+        .credits {
+            text-transform: uppercase;
+            position: absolute;
+            @extend %center;
+            font-size: 30px;
+            bottom: 3%;
+            width: 135px;
+            height: 45px;
+            border: 5px solid darken($minor-color2, 15%);
+            text-align: center;
+            padding: 3px;
+            border-radius: 3px;
+            color: $minor-color2;
+            cursor: url("../images/crosshair.cur"), crosshair;
+
+            &:hover {
+                background-color: darken($minor-color2, 15%);
+                color: $additional-color2;
+            }
+        }
+    }
 }
