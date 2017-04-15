@@ -72,6 +72,7 @@ body {
 
 .start .content__img {
   height: 175%;
+  width: 50%;
   position: absolute;
   top: -153px;
 }
@@ -91,7 +92,7 @@ body {
   font-size: 20px;
   bottom: 35px;
   right: 20px;
-  cursor: crosshair;
+  cursor: url("../images/crosshair.cur"), crosshair;
 }
 
 .music {
@@ -226,7 +227,7 @@ button {
   font-size: 20px;
   margin-top: 20px;
   border-radius: 2px;
-  cursor: pointer;
+  cursor: url("../images/crosshair.cur"), pointer;
 }
 
 button:hover {

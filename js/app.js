@@ -230,6 +230,14 @@ document.addEventListener("DOMContentLoaded", function() {
         critical.style.display = "none";
 
     });
+//robocop wins
+    function roboWins(){
+        
+    }
+//ed wins
+    function edWins(){
+
+    }
 
     //**********************************************
     //******************** music *******************

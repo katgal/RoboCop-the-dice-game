@@ -26,6 +26,7 @@ body {
 
         &__img {
             height: 175%;
+            width:50%;
             position: absolute;
             top: -153px;
         }
@@ -34,18 +35,18 @@ body {
             width: 50%;
             height: 100%;
             float: right;
-            color: rgb(66, 180, 106);
+            color: $minor-color2;
             font-size: 30px;
             line-height: 63px;
         }
 
         &__fight {
             position: absolute;
-            color: rgb(66, 180, 106);
+            color: $minor-color2;
             font-size: 20px;
             bottom: 35px;
             right: 20px;
-            cursor: crosshair;
+            cursor: url("../images/crosshair.cur"), crosshair;
         }
     }
 }
@@ -189,7 +190,7 @@ button {
     font-size: 20px;
     margin-top: 20px;
     border-radius: 2px;
-    cursor: pointer;
+    cursor: url("../images/crosshair.cur"), pointer;
 
     &:hover {
         border: 5px solid rgba($minor-color, 0.7);
