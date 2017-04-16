@@ -212,7 +212,7 @@ main {
   border: none;
 }
 
-button, #input, .dice, .hit, .endRobo .ending1 .credits, .endEd .ending2 .tryAgain {
+button, #input, .dice, .hit, .endRobo .ending1 .credits, .creditsBoard .board .closeCredits, .endEd .ending2 .tryAgain {
   left: 50%;
   transform: translateX(-50%);
 }
@@ -365,6 +365,59 @@ button:focus {
 }
 
 .endRobo .ending1 .credits:hover {
+  background-color: #2d7c49;
+  color: white;
+}
+
+.creditsBoard {
+  left: 0;
+  top: 0;
+}
+
+.creditsBoard .board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.creditsBoard .board .katgal {
+  width: 220px;
+  height: 220px;
+  border: 5px solid #2d7c49;
+  border-radius: 3px;
+  box-shadow: 6px 7px 20px 9px black;
+}
+
+.creditsBoard .board p {
+  width: 100%;
+  font-size: 20px;
+  color: #42b46a;
+  line-height: 33px;
+  margin: 20px;
+}
+
+.creditsBoard .board p:last-of-type {
+  margin: 0;
+}
+
+.creditsBoard .board .closeCredits {
+  text-transform: uppercase;
+  position: absolute;
+  font-size: 25px;
+  bottom: 5%;
+  width: 180px;
+  height: 65px;
+  border: 5px solid #2d7c49;
+  text-align: center;
+  padding: 3px;
+  border-radius: 3px;
+  color: #42b46a;
+  cursor: url("../images/crosshair.cur"), crosshair;
+}
+
+.creditsBoard .board .closeCredits:hover {
   background-color: #2d7c49;
   color: white;
 }

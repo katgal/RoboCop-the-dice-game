@@ -37,9 +37,6 @@ document.addEventListener("DOMContentLoaded", function() {
     //***************** game core  *****************
     //**********************************************
 
-
-
-
     //scores variables
     var score, currentScore, activePlayer, play;
 
@@ -138,11 +135,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 diceImg.classList.add("showHide");
                 //ending Robo
-                if(score[0]>= winningScore){
+                if (score[0] >= winningScore) {
                     edDestroyed();
                     setTimeout(roboWins, 5000);
 
-                }else{
+                } else {
                     roboDestroyed();
                     setTimeout(edWins, 3000);
                 }
@@ -156,11 +153,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 diceImg.classList.add("showHide");
 
-                /*var fix = new Audio("audio/fix.wav");
-                fix.volume = 0.4;
-                fix.play();
-                ed.src = "images/hit.jpg";
-                */
                 edDestroyed();
 
                 critical.style.display = "block";
@@ -176,11 +168,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
                 diceImg.classList.add("showHide");
 
-                /*var disappointed = new Audio("audio/dis.wav");
-                disappointed.volume = 0.4;
-                disappointed.play();
-                robo.src = "images/robodead.jpg";
-                */
                 roboDestroyed();
                 critical.style.display = "block";
 
@@ -250,7 +237,8 @@ document.addEventListener("DOMContentLoaded", function() {
     });
     //robocop wins
     function roboWins() {
-        document.querySelector(".endRobo").classList.remove("showHide");
+        var end1 = document.querySelector(".endRobo");
+        end1.classList.remove("showHide");
 
         var thanku = new Audio("audio/thanku.wav");
         thanku.volume = 0.4;
@@ -264,7 +252,21 @@ document.addEventListener("DOMContentLoaded", function() {
         var name = function() {
             murphy.play();
         };
-        setTimeout(name, 11500);
+        setTimeout(name, 10000);
+        //close ending board and show credits
+        document.querySelector(".credits").addEventListener("click", function() {
+            end1.classList.add("showHide");
+            var creditBoard = document.querySelector(".creditsBoard");
+            creditBoard.classList.remove("showHide");
+            //return to game
+            document.querySelector(".closeCredits").addEventListener("click", function() {
+                var goodNight = new Audio("audio/coop.wav");
+                goodNight.volume = 1;
+                goodNight.play();
+
+                creditBoard.classList.add("showHide");
+            });
+        });
     }
     //ed wins
     function edWins() {
@@ -278,24 +280,25 @@ document.addEventListener("DOMContentLoaded", function() {
         };
         setTimeout(gameOver, 500);
 
-        document.querySelector(".tryAgain").addEventListener("click", function(){
+        document.querySelector(".tryAgain").addEventListener("click", function() {
             end2.classList.add("showHide");
         });
 
     }
+    //audio and images for winners
+    function edDestroyed() {
+        var fix = new Audio("audio/fix.wav");
+        fix.volume = 0.4;
+        fix.play();
+        ed.src = "images/hit.jpg";
+    }
 
-function edDestroyed(){
-    var fix = new Audio("audio/fix.wav");
-    fix.volume = 0.4;
-    fix.play();
-    ed.src = "images/hit.jpg";
-}
-function roboDestroyed(){
-    var disappointed = new Audio("audio/dis.wav");
-    disappointed.volume = 0.4;
-    disappointed.play();
-    robo.src = "images/robodead.jpg";
-}
+    function roboDestroyed() {
+        var disappointed = new Audio("audio/dis.wav");
+        disappointed.volume = 0.4;
+        disappointed.play();
+        robo.src = "images/robodead.jpg";
+    }
     //**********************************************
     //******************** music *******************
     //**********************************************
