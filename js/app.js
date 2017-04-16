@@ -5,21 +5,26 @@ document.addEventListener("DOMContentLoaded", function() {
     //**********************************************
     //******************** intro *******************
     //**********************************************
+
+    //I tried to find more universal solution but something was wrong, and I need to fugure this out...
     function intro() {
         var action = document.querySelector(".fight");
         var fullscreen = document.querySelector(".start");
 
-
         function blink() {
-            var blink = document.querySelector(".blink");
+            var blink = document.querySelectorAll(".blink");
 
             function hide() {
-                blink.style.opacity = "0";
+
+                blink[0].style.opacity = "0";
+                blink[1].style.opacity = "0";
                 setTimeout(show, 500);
             }
 
             function show() {
-                blink.style.opacity = "1";
+
+                blink[0].style.opacity = "1";
+                blink[1].style.opacity = "1";
                 setTimeout(hide, 500);
             }
             hide();
@@ -258,11 +263,12 @@ document.addEventListener("DOMContentLoaded", function() {
             end1.classList.add("showHide");
             var creditBoard = document.querySelector(".creditsBoard");
             creditBoard.classList.remove("showHide");
+
+            var goodNight = new Audio("audio/coop.wav");
+            goodNight.volume = 1;
+            goodNight.play();
             //return to game
             document.querySelector(".closeCredits").addEventListener("click", function() {
-                var goodNight = new Audio("audio/coop.wav");
-                goodNight.volume = 1;
-                goodNight.play();
 
                 creditBoard.classList.add("showHide");
             });
@@ -299,6 +305,23 @@ document.addEventListener("DOMContentLoaded", function() {
         disappointed.play();
         robo.src = "images/robodead.jpg";
     }
+
+    //**********************************************
+    //**************** instruction *****************
+    //**********************************************
+
+    function instruction() {
+        var instr = document.querySelector(".instructionBoard");
+
+        document.querySelector(".instruction").addEventListener("click", function() {
+            instr.classList.remove("showHide");
+        });
+
+        document.querySelector(".return").addEventListener("click", function() {
+            instr.classList.add("showHide");
+        });
+    }
+    instruction();
     //**********************************************
     //******************** music *******************
     //**********************************************

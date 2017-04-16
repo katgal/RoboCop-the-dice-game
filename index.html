@@ -28,6 +28,9 @@
     <!-- game core -->
     <main>
         <div class="gameWrap">
+            <div class="instruction" title="How to play">
+                ?
+            </div>
             <!-- player 1 panel -->
             <div class="player-0-panel panel activePlayer">
                 <div class="playerChar">
@@ -146,7 +149,49 @@
             </div>
         </div>
     </div>
+    <!-- instruction -->
+    <div class="start instructionBoard showHide">
+        <div class="start__content content tips">
+            <h1 class="tips__header">
+            How to play<span class="blink">_</span>
+        </h1>
+            <img src="images/ed-teacher.png" class="ed209" alt="" title="You have 5 seconds to comply..." />
+            <ol class="tips__list">
+                <li>
+                    Game has two players, they play by turns;
+                </li>
+                <li>
+                    Players roll the <span class="important">DICE</span> to fire rounds to opponent - <span class="important">HOLD</span> button stores opponents damages and shows them in general score;
+                </li>
+                <li>
+                    After clicking <span class="important">HOLD</span> button its opponent turn;
+                </li>
+                <li>
+                    <span class="important">CURRENT</span> box shows how many shells player can shot at once <br /> by rolling the dice;
+                </li>
+                <li>
+                    Player can roll the dice as many times he wishes;
+                </li>
+                <li>
+                    <span class="important">BUT</span> if player rolls a 1, all his <span class="important">CURRENT</span> rounds are lost, and it is opponents turn.
+                </li>
+                <li>
+                    Each player has chance to <span class="important">CRITICAL STRIKE</span> that destroys opponent immediately; global damage/score have to be equal to: default settings - <span class="important">RoboCop</span>: 13, 21, 44; <span class="important"><br />
+                        Ed 209</span>: 33, 47;
+                </li>
+                <li>
+                    Players wins by damaging opponent. Default general score/damage is set to <span class="important">50</span>;
+                </li>
+                <li>
+                    Players can set winning sccore/damage manually by writing number in <span class="important">SET AMMO</span> box; this operation changes default critical strikes settings as well.
+                </li>
+            </ol>
 
+            <div class="return">
+                Return to game
+            </div>
+        </div>
+    </div>
 
 
     <script type="text/javascript" src="js/app.js"></script>
