@@ -53,6 +53,40 @@ body {
   font-family: 'ambleregular', Arial, sans-serif;
 }
 
+.endRobo .ending1 .credits, .creditsBoard .board .closeCredits, .endEd .ending2 .tryAgain, .instructionBoard .tips .return, button, #input, .dice, .hit {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btnRoll:hover, .btnHold:hover {
+  color: white;
+  background-color: transparent;
+  border: none;
+}
+
+.endRobo .ending1 .credits, .creditsBoard .board .closeCredits, .endEd .ending2 .tryAgain, .instructionBoard .tips .return {
+  text-transform: uppercase;
+  position: absolute;
+  bottom: 5%;
+  border: 5px solid #2d7c49;
+  text-align: center;
+  padding: 3px;
+  border-radius: 3px;
+  color: #42b46a;
+  cursor: url("../images/crosshair.cur"), crosshair;
+}
+
+.endRobo .ending1 .credits:hover, .creditsBoard .board .closeCredits:hover, .endEd .ending2 .tryAgain:hover, .instructionBoard .tips .return:hover {
+  background-color: #2d7c49;
+  color: white;
+}
+
+.panel, .creditsBoard .board, .endEd .ending2, .instructionBoard .tips {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .start {
   width: 100vw;
   height: 100vh;
@@ -60,6 +94,8 @@ body {
   z-index: 100;
   display: flex;
   position: fixed;
+  left: 0;
+  top: 0;
 }
 
 .start .content {
@@ -120,7 +156,6 @@ main {
   background-size: cover;
   background-position: center;
   display: flex;
-  display: -ms-flexbox;
 }
 
 .activePlayer {
@@ -167,14 +202,7 @@ main {
 .panel {
   width: 50%;
   height: 100%;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -ms-flex-pack: distribute;
   justify-content: space-around;
-  -ms-flex-align: center;
-  align-items: center;
 }
 
 .panel .playerChar {
@@ -226,17 +254,6 @@ main {
 .panel .playerCurrentWrap .playerCurrentScore {
   text-align: center;
   font-size: 42px;
-}
-
-.btnRoll:hover, .btnHold:hover {
-  color: white;
-  background-color: transparent;
-  border: none;
-}
-
-button, #input, .dice, .hit, .endRobo .ending1 .credits, .creditsBoard .board .closeCredits, .endEd .ending2 .tryAgain, .instructionBoard .tips .return {
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 button {
@@ -320,11 +337,6 @@ button:focus {
   display: none;
 }
 
-.endRobo {
-  left: 0;
-  top: 0;
-}
-
 .endRobo .ending1 {
   padding: 40px;
 }
@@ -367,39 +379,17 @@ button:focus {
 .endRobo .ending1__container p .mission {
   font-size: 30px;
   text-transform: uppercase;
-  line-height: 105px;
+  line-height: 90px;
   margin-left: 20%;
 }
 
 .endRobo .ending1 .credits {
-  text-transform: uppercase;
-  position: absolute;
   font-size: 30px;
-  bottom: 3%;
   width: 135px;
   height: 45px;
-  border: 5px solid #2d7c49;
-  text-align: center;
-  padding: 3px;
-  border-radius: 3px;
-  color: #42b46a;
-  cursor: url("../images/crosshair.cur"), crosshair;
-}
-
-.endRobo .ending1 .credits:hover {
-  background-color: #2d7c49;
-  color: white;
-}
-
-.creditsBoard {
-  left: 0;
-  top: 0;
 }
 
 .creditsBoard .board {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 40px;
   text-align: center;
 }
@@ -425,34 +415,12 @@ button:focus {
 }
 
 .creditsBoard .board .closeCredits {
-  text-transform: uppercase;
-  position: absolute;
   font-size: 25px;
-  bottom: 5%;
   width: 180px;
   height: 65px;
-  border: 5px solid #2d7c49;
-  text-align: center;
-  padding: 3px;
-  border-radius: 3px;
-  color: #42b46a;
-  cursor: url("../images/crosshair.cur"), crosshair;
-}
-
-.creditsBoard .board .closeCredits:hover {
-  background-color: #2d7c49;
-  color: white;
-}
-
-.endEd {
-  left: 0;
-  top: 0;
 }
 
 .endEd .ending2 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 40px;
 }
 
@@ -476,36 +444,18 @@ button:focus {
 }
 
 .endEd .ending2 .tryAgain {
-  text-transform: uppercase;
-  position: absolute;
   font-size: 30px;
-  bottom: 5%;
   width: 180px;
   height: 45px;
-  border: 5px solid #2d7c49;
-  text-align: center;
-  padding: 3px;
-  border-radius: 3px;
-  color: #42b46a;
-  cursor: url("../images/crosshair.cur"), crosshair;
-}
-
-.endEd .ending2 .tryAgain:hover {
-  background-color: #2d7c49;
-  color: white;
 }
 
 .instructionBoard {
-  left: 0;
-  top: 0;
   background-color: rgba(45, 124, 73, 0.5);
 }
 
 .instructionBoard .tips {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 10px;
+  box-shadow: 13px 11px 19px 3px black;
 }
 
 .instructionBoard .tips__header {
@@ -538,23 +488,9 @@ button:focus {
 }
 
 .instructionBoard .tips .return {
-  text-transform: uppercase;
-  position: absolute;
   font-size: 25px;
-  bottom: 5%;
   width: 180px;
   height: 65px;
-  border: 5px solid #2d7c49;
-  text-align: center;
-  padding: 3px;
-  border-radius: 3px;
-  color: #42b46a;
-  cursor: url("../images/crosshair.cur"), crosshair;
-}
-
-.instructionBoard .tips .return:hover {
-  background-color: #2d7c49;
-  color: white;
 }
 
 /*# sourceMappingURL=main.css.map */

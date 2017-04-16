@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", function() {
     //******************** intro *******************
     //**********************************************
 
-    //I tried to find more universal solution but something was wrong, and I need to fugure this out...
+    //I tried to find more universal solution but something was wrong, and I need to figure this out...
     function intro() {
         var action = document.querySelector(".fight");
         var fullscreen = document.querySelector(".start");
@@ -121,11 +121,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
             var setAmmo = document.querySelector("#input").value;
             var winningScore;
-
-            // if(setAmmo !== /^\d+$/){
-            // play = false;
-            // }
-            // setAmmo = /^\d+$/;
 
             if (setAmmo) {
                 winningScore = setAmmo;
@@ -344,5 +339,5 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
     music();
-
+    //
 });

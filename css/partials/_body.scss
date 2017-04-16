@@ -5,6 +5,43 @@
 body {
     font-family: 'ambleregular', Arial, sans-serif;
 }
+// center elements
+
+%center {
+    left: 50%;
+    transform: translateX(-50%);
+}
+// button styles
+
+%buttonStyles {
+    color: $additional-color2;
+    background-color: transparent;
+    border: none;
+}
+
+%buttonStylesModal {
+    text-transform: uppercase;
+    position: absolute;
+    @extend %center;
+    bottom: 5%;
+    border: 5px solid darken($minor-color2, 15%);
+    text-align: center;
+    padding: 3px;
+    border-radius: 3px;
+    color: $minor-color2;
+    cursor: url("../images/crosshair.cur"), crosshair;
+
+    &:hover {
+        background-color: darken($minor-color2, 15%);
+        color: $additional-color2;
+    }
+}
+//modal content positioning
+%modalFlexColumn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 //*********************************************
 //******************** intro ******************
 //*********************************************
@@ -16,6 +53,8 @@ body {
     z-index: 100;
     display: flex;
     position: fixed;
+    left: 0;
+    top: 0;
 
     .content {
         width: 1000px;
@@ -82,7 +121,6 @@ main {
     background-size: cover;
     background-position: center;
     display: flex;
-    display: -ms-flexbox;
 }
 //*************** active player ***************
 
@@ -131,14 +169,8 @@ main {
 .panel {
     width: 50%;
     height: 100%;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-direction: column;
-    flex-direction: column;
-    -ms-flex-pack: distribute;
+    @extend %modalFlexColumn;
     justify-content: space-around;
-    -ms-flex-align: center;
-    align-items: center;
 
     .playerChar {
         width: 200px;
@@ -190,18 +222,6 @@ main {
             font-size: 42px;
         }
     }
-}
-
-%buttonStyles {
-    color: $additional-color2;
-    background-color: transparent;
-    border: none;
-}
-// center elements
-
-%center {
-    left: 50%;
-    transform: translateX(-50%);
 }
 
 button {
@@ -301,9 +321,6 @@ button {
 //*********************************************
 
 .endRobo {
-    left: 0;
-    top: 0;
-
     .ending1 {
         padding: 40px;
 
@@ -343,7 +360,7 @@ button {
                 .mission {
                     font-size: 30px;
                     text-transform: uppercase;
-                    line-height: 105px;
+                    line-height: 90px;
                     margin-left: 20%;
                 }
             }
@@ -351,24 +368,10 @@ button {
         //*********************************************
         //***************** credits *******************
         .credits {
-            text-transform: uppercase;
-            position: absolute;
-            @extend %center;
             font-size: 30px;
-            bottom: 3%;
             width: 135px;
             height: 45px;
-            border: 5px solid darken($minor-color2, 15%);
-            text-align: center;
-            padding: 3px;
-            border-radius: 3px;
-            color: $minor-color2;
-            cursor: url("../images/crosshair.cur"), crosshair;
-
-            &:hover {
-                background-color: darken($minor-color2, 15%);
-                color: $additional-color2;
-            }
+            @extend %buttonStylesModal;
         }
     }
 }
@@ -377,13 +380,8 @@ button {
 //*********************************************
 
 .creditsBoard {
-    left: 0;
-    top: 0;
-
     .board {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @extend %modalFlexColumn;
         padding: 40px;
         text-align: center;
 
@@ -408,39 +406,20 @@ button {
         }
 
         .closeCredits {
-            text-transform: uppercase;
-            position: absolute;
-            @extend %center;
             font-size: 25px;
-            bottom: 5%;
             width: 180px;
             height: 65px;
-            border: 5px solid darken($minor-color2, 15%);
-            text-align: center;
-            padding: 3px;
-            border-radius: 3px;
-            color: $minor-color2;
-            cursor: url("../images/crosshair.cur"), crosshair;
-
-            &:hover {
-                background-color: darken($minor-color2, 15%);
-                color: $additional-color2;
-            }
+            @extend %buttonStylesModal;
         }
     }
 }
-//*********************************************
+//**********************************************
 //***************** ending 2 *******************
-//*************** game over *******************
+//*************** game over ********************
 
 .endEd {
-    left: 0;
-    top: 0;
-
     .ending2 {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @extend %modalFlexColumn;
         padding: 40px;
 
         .gameOver {
@@ -463,24 +442,10 @@ button {
         }
 
         .tryAgain {
-            text-transform: uppercase;
-            position: absolute;
-            @extend %center;
             font-size: 30px;
-            bottom: 5%;
             width: 180px;
             height: 45px;
-            border: 5px solid darken($minor-color2, 15%);
-            text-align: center;
-            padding: 3px;
-            border-radius: 3px;
-            color: $minor-color2;
-            cursor: url("../images/crosshair.cur"), crosshair;
-
-            &:hover {
-                background-color: darken($minor-color2, 15%);
-                color: $additional-color2;
-            }
+            @extend %buttonStylesModal;
         }
     }
 }
@@ -489,15 +454,12 @@ button {
 //*********************************************
 
 .instructionBoard {
-    left: 0;
-    top: 0;
     background-color: rgba(darken($minor-color2, 15%), 0.5);
 
     .tips {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        @extend %modalFlexColumn;
         padding: 10px;
+        box-shadow: 13px 11px 19px 3px $additional-color;
 
         &__header {
             color: $minor-color2;
@@ -506,8 +468,7 @@ button {
 
         .ed209 {
             position: absolute;
-            // top: 80px;
-            top:55px;
+            top: 55px;
             right: -235px;
             height: 95%;
             width: 580px;
@@ -530,24 +491,10 @@ button {
         }
 
         .return {
-            text-transform: uppercase;
-            position: absolute;
-            @extend %center;
             font-size: 25px;
-            bottom: 5%;
             width: 180px;
             height: 65px;
-            border: 5px solid darken($minor-color2, 15%);
-            text-align: center;
-            padding: 3px;
-            border-radius: 3px;
-            color: $minor-color2;
-            cursor: url("../images/crosshair.cur"), crosshair;
-
-            &:hover {
-                background-color: darken($minor-color2, 15%);
-                color: $additional-color2;
-            }
+            @extend %buttonStylesModal;
         }
     }
 }
